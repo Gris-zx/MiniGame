@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">中国ch</string>
+    <string name="button">点击我111</string>
+    <string name="textView">你好，世界！5555555555555</string>
+    <string name="clicked">我被点击了！777777</string>
+</resources>
