@@ -14,5 +14,9 @@ class MainActivity : AppCompatActivity() {
             textView.text = resources.getString(R.string.clicked)
             Log.d("sadaa","sadasda")
         }
+        button10.setOnClickListener {
+            textView.text = resources.getString(R.string.clicked)
+            Log.d("sadaa","sadasda")
+        }
     }
 }
