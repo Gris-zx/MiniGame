@@ -26,26 +26,25 @@ class MainActivity3 : AppCompatActivity() {
     var successcount= 0
 
     var fankui = "A"
+    var mediaPlayer = MediaPlayer()
 
     fun zhendong(){
         val vibrator = this.getSystemService(android.content.Context.VIBRATOR_SERVICE) as Vibrator
-        val mediaPlayer = MediaPlayer.create(this, R.raw.dianzhong)//msg是滴的MP3文件，很小
+//        val mediaPlayer = MediaPlayer.create(this, R.raw.dianzhong)//msg是滴的MP3文件，很小
 //        mediaPlayer.start()
-//
-//
-//        vibrator.vibrate(200)
-        object : Thread() {
-            override fun run() {
-                super.run()
-                mediaPlayer.start()
-            }
-        }.start()
-        object : Thread() {
-            override fun run() {
-                super.run()
-                vibrator.vibrate(200)
-            }
-        }.start()
+        vibrator.vibrate(200)
+//        object : Thread() {
+//            override fun run() {
+//                super.run()
+//                mediaPlayer.start()
+//            }
+//        }.start()
+//        object : Thread() {
+//            override fun run() {
+//                super.run()
+//                vibrator.vibrate(200)
+//            }
+//        }.start()
 
     }//点击按钮震动
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,11 +55,38 @@ class MainActivity3 : AppCompatActivity() {
 
         textView_successCount.text="成功：${successcount}"
         textView_life.text="生命：${life}"
+        var bofang= true
+
+
+         mediaPlayer = MediaPlayer.create(this, R.raw.bgm)
+        button_bgm.setOnClickListener {
+
+            if (bofang){
+                mediaPlayer.start()
+                bofang =false
+            }else{
+
+               // mediaPlayer =  MediaPlayer.create(this, null)
+                mediaPlayer.pause()
+                Log.d("button_music", "music")
+                bofang = true
+            }
+
+
+        }
+        button_home.setOnClickListener {
+            val intent = Intent(this,MainActivity2::class.java)
+            startActivity(intent)
+
+        }
+
         button_start.setOnClickListener {
             zhendong()
             running = true
 
             Log.d("button_start", "开始游戏")
+
+
 
             buttonA.setOnClickListener {
                 zhendong()
@@ -177,7 +203,7 @@ class MainActivity3 : AppCompatActivity() {
 
 
 
-        fun reclicklist(){   //重制
+        fun reclicklist(){   //重置
             clicklist = arrayOf(0, 0, 0, 0, 0, 0)
             fankui="A"
         }
@@ -250,6 +276,12 @@ class MainActivity3 : AppCompatActivity() {
             }
             handler.post(runnable)
         }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mediaPlayer.reset()
+        mediaPlayer.release()
+    }
 
 
     }

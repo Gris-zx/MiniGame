@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Zuoye1">
-        <activity android:name=".VictoryActivity"></activity>
+        <activity android:name=".MainActivity2"></activity>
+        <activity android:name=".MainActivity4" />
+        <activity android:name=".VictoryActivity" />
         <activity android:name=".SuccessActivity" />
         <activity android:name=".FailActivity" />
         <activity android:name=".MainActivity3" />
