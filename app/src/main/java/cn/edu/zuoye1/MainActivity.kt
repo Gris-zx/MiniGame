@@ -1,5 +1,6 @@
 package cn.edu.zuoye1
 
+import android.content.Context.VIBRATOR_SERVICE
 import android.os.Bundle
 import android.os.Handler
 import android.os.Vibrator
@@ -16,85 +17,96 @@ class MainActivity : AppCompatActivity() {
     var time=""
     var clicklist = arrayOf(0, 0, 0, 0, 0, 0)
     var life = 3
+    fun zhendong(){
+        val vibrator = this.getSystemService(android.content.Context.VIBRATOR_SERVICE) as Vibrator
+        vibrator.vibrate(200)
+    }//点击按钮震动
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         button_start.setOnClickListener {
+            zhendong()
             running = true
             runTimer()
-            Log.d("sadaa", "sadasda")
-        }
+            Log.d("button_start", "开始游戏")
 
-        buttonA.setOnClickListener {
-            val vibrator = this.getSystemService(this.VIBRATOR_SERVICE) as Vibrator
-            vibrator.vibrate(1000)
 
-            clicklist[0]++
-            Log.d("button1", "${clicklist[0]}")
-            isSuccess()
-        }
+            buttonA.setOnClickListener {
+                zhendong()
 
-        buttonB1.setOnClickListener {
-            if(clicklist[0]==1){
-                clicklist[1]++
-                Log.d("buttonB1", "${clicklist[1]}")
-            }else{
-                clicklist = arrayOf(0, 0, 0, 0, 0, 0)
-                Toast.makeText(this, "你的手被割了，请重新点击,你还有两次机会!!!", Toast.LENGTH_SHORT).show()
-                life --
+
+                clicklist[0]++
+                Log.d("buttonA", "${clicklist[0]}")
             }
-            isLife(life)
-        }
-        buttonB2.setOnClickListener {
-            if(clicklist[0]==2){
-                clicklist[2]++
-                Log.d("buttonB2", "${clicklist[2]}")
-            }else{
-                clicklist = arrayOf(0, 0, 0, 0, 0, 0)
-                Toast.makeText(this, "你的手被割了，请重新点击,你还有${life}次机会!!!", Toast.LENGTH_SHORT).show()
-                life --
+
+            buttonB1.setOnClickListener {
+                zhendong()
+                if (clicklist[0] == 1) {
+                    clicklist[1]++
+                    Log.d("buttonB1", "${clicklist[1]}")
+                }
+                else {
+                    clicklist = arrayOf(0, 0, 0, 0, 0, 0)
+                    Toast.makeText(this, "你的手被割了，请重新点击,你还有${life}次机会!!!", Toast.LENGTH_SHORT).show()
+                    life--
+                }
+                isLife(life)
             }
-            isLife(life)
+            buttonB2.setOnClickListener {
+                zhendong()
+                if (clicklist[0] == 2) {
+                    clicklist[2]++
+                    Log.d("buttonB2", "${clicklist[2]}")
+                } else {
+                    clicklist = arrayOf(0, 0, 0, 0, 0, 0)
+                    Toast.makeText(this, "你的手被割了，请重新点击,你还有${life}次机会!!!", Toast.LENGTH_SHORT).show()
+                    life--
+                }
+                isLife(life)
+
+            }
+            buttonB3.setOnClickListener {
+                zhendong()
+                if (clicklist[0] == 3) {
+                    clicklist[3]++
+                    Log.d("buttonB3", "${clicklist[3]}")
+                } else {
+                    clicklist = arrayOf(0, 0, 0, 0, 0, 0)
+                    Toast.makeText(this, "你的手被割了，请重新点击,你还有${life}次机会!!!", Toast.LENGTH_SHORT).show()
+                    life--
+                }
+                isLife(life)
+            }
+            buttonB4.setOnClickListener {
+                zhendong()
+
+                if (clicklist[0] == 4) {
+                    clicklist[4]++
+                    Log.d("buttonB4", "${clicklist[4]}")
+                } else {
+                    clicklist = arrayOf(0, 0, 0, 0, 0, 0)
+                    Toast.makeText(this, "你的手被割了，请重新点击,你还有${life}次机会!!!", Toast.LENGTH_SHORT).show()
+                    life--
+                }
+                isLife(life)
+            }
+            buttonB5.setOnClickListener {
+                zhendong()
+                if (clicklist[0] == 5) {
+                    clicklist[5]++
+                    Log.d("buttonB5", "${clicklist[5]}")
+                } else {
+                    clicklist = arrayOf(0, 0, 0, 0, 0, 0)
+                    Toast.makeText(this, "你的手被割了，请重新点击,你还有${life}次机会!!!", Toast.LENGTH_SHORT).show()
+                    life--
+                }
+                isLife(life)
+                isSuccess()
+            }
+            Log.d("buttonsum", "${clicklist[0]} ${clicklist[1]} ${clicklist[2]} ${clicklist[3]} ${clicklist[4]} ${clicklist[5]}")
 
         }
-        buttonB3.setOnClickListener {
-            if(clicklist[0]==3){
-                clicklist[3]++
-                Log.d("buttonB3", "${clicklist[3]}")
-            }else{
-                clicklist = arrayOf(0, 0, 0, 0, 0, 0)
-                Toast.makeText(this, "你的手被割了，请重新点击,你还有${life}次机会!!!", Toast.LENGTH_SHORT).show()
-                life --
-            }
-            isLife(life)
-        }
-        buttonB4.setOnClickListener {
-
-            if(clicklist[0]==4){
-                clicklist[4]++
-                Log.d("buttonB4", "${clicklist[4]}")
-            }else{
-                clicklist = arrayOf(0, 0, 0, 0, 0, 0)
-                Toast.makeText(this, "你的手被割了，请重新点击,你还有${life}次机会!!!", Toast.LENGTH_SHORT).show()
-                life --
-            }
-            isLife(life)
-        }
-        buttonB5.setOnClickListener {
-            if(clicklist[0]==5){
-                clicklist[5]++
-                Log.d("buttonB5", "${clicklist[5]}")
-            }else{
-                clicklist = arrayOf(0, 0, 0, 0, 0, 0)
-                Toast.makeText(this, "你的手被割了，请重新点击,你还有${life}次机会!!!", Toast.LENGTH_SHORT).show()
-                life --
-            }
-            isLife(life)
-            isSuccess()
-        }
-        Log.d("buttonsum", "${clicklist[0]} ${clicklist[1]} ${clicklist[2]} ${clicklist[3]} ${clicklist[4]} ${clicklist[5]}")
-
     }
 
         fun isSuccess(){

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">中国ch</string>
+    <string name="app_name">快刀戳指缝</string>
     <string name="button">点击我111</string>
-    <string name="textView">你好，世界！5555555555555</string>
-    <string name="clicked">我被点击了！777777</string>
+    <string name="textView">欢迎游玩快刀戳指缝，请点击开始游戏</string>
+    <string name="clicked">我被点击了！</string>
 </resources>
