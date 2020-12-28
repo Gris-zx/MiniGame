@@ -23,7 +23,7 @@ class MainActivity2 : AppCompatActivity() {
         button_game.setOnClickListener {
             music()
             AlertDialog.Builder(this)
-                .setMessage("       快刀戳指缝又叫做勇敢者游戏，是《荒野大镖客2》中可以游玩的小游戏之一，考验玩家的手速。" +
+                .setMessage("       快刀戳指缝又叫做勇敢者游戏，是《荒野大镖客2》中可以游玩的小游戏之一，考验玩家的手速。\n" +
                         "在游戏中你需要伸出一只手，五指分开，掌心向下放在桌子上，然后用匕首快速向指缝之间的空位戳刺，你需要快速移动匕首并且避免让手指受伤，戳刺轮数最多的玩家获胜。\n")
                 .setTitle("关于游戏:")
 
@@ -42,6 +42,22 @@ class MainActivity2 : AppCompatActivity() {
             val intent = Intent(this,MainActivity3::class.java)
             startActivity(intent)
         }
+        button_fanying.setOnClickListener {
+            music()
+            AlertDialog.Builder(this)
+                .setMessage("      由于该模式出现逻辑错误，本人暂时对该模式实施临时下线维护，详细上线时间请咨询：\nqq：1713787511\n")
+                .setTitle("反应模式:")
+
+                .setPositiveButton("确定", DialogInterface.OnClickListener { dialogInterface, i ->
+                    Toast.makeText(this,"您已阅读维护公告",Toast.LENGTH_LONG).show()
+                })
+                .setIcon(drawable.beijing)
+                .setNeutralButton("取消", null)
+                .create()
+                .show()
+
+        }
+
         button_pay.setOnClickListener {
             music()
             val intent = Intent(this,MainActivity4::class.java)

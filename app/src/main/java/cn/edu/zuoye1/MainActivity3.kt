@@ -21,7 +21,7 @@ class MainActivity3 : AppCompatActivity() {
 
     var clicklist = arrayOf(0, 0, 0, 0, 0, 0)
 
-    var life = 3
+    var life = 5
 
     var successcount= 0
 
@@ -53,6 +53,14 @@ class MainActivity3 : AppCompatActivity() {
         runTimer()
 
 
+        buttonA.isEnabled=false
+        buttonB1.isEnabled=false
+        buttonB2.isEnabled=false
+        buttonB3.isEnabled=false
+        buttonB4.isEnabled=false
+        buttonB5.isEnabled=false
+        imageView2.isEnabled=false
+
         textView_successCount.text="成功：${successcount}"
         textView_life.text="生命：${life}"
         var bofang= true
@@ -78,126 +86,135 @@ class MainActivity3 : AppCompatActivity() {
             val intent = Intent(this,MainActivity2::class.java)
             startActivity(intent)
 
+            mediaPlayer.reset()
+            mediaPlayer.release()
+
         }
 
         button_start.setOnClickListener {
             zhendong()
+
+            second = 0
             running = true
 
             Log.d("button_start", "开始游戏")
-
-
-
-            buttonA.setOnClickListener {
-                zhendong()
-                if(fankui=="A" && clicklist[0]==0){
-                    clicklist[0]++
-                    Log.d("buttonA", "${clicklist[0]}")
-                }
-                else if(fankui=="B1" && clicklist[0]==1){
-                    clicklist[0]++
-                    Log.d("buttonA", "${clicklist[0]}")
-                }
-                else if(fankui=="B2" && clicklist[0]==2){
-                    clicklist[0]++
-                    Log.d("buttonA", "${clicklist[0]}")
-                }
-                else if(fankui=="B3" && clicklist[0]==3){
-                    clicklist[0]++
-                    Log.d("buttonA", "${clicklist[0]}")
-                }
-                else if(fankui=="B4" && clicklist[0]==4){
-                    clicklist[0]++
-                    Log.d("buttonA", "${clicklist[0]}")
-                }
-                else if(fankui=="B5" && clicklist[0]==5){
-                    clicklist[0]++
-                    Log.d("buttonA", "${clicklist[0]}")
-                }else{
-                    reclicklist()
-                    clickError()
-                }
-
-                isLife(life)
-            }
-
-            buttonB1.setOnClickListener {
-                zhendong()
-
-                if (clicklist[0] == 1) {
-                    clicklist[1]++
-                    fankui = "B1"
-                    Log.d("buttonB1", "${clicklist[1]}")
-                }
-                else {
-                    reclicklist()
-                    clickError()
-                }
-
-                isLife(life)
-            }
-            buttonB2.setOnClickListener {
-                zhendong()
-                if (clicklist[0] == 2) {
-                    clicklist[2]++
-                    fankui = "B2"
-                    Log.d("buttonB2", "${clicklist[2]}")
-                } else {
-                    reclicklist()
-                    clickError()
-
-                }
-
-                isLife(life)
-
-            }
-            buttonB3.setOnClickListener {
-                zhendong()
-                if (clicklist[0] == 3) {
-                    clicklist[3]++
-                    fankui = "B3"
-                    Log.d("buttonB3", "${clicklist[3]}")
-                } else {
-                   reclicklist()
-                    clickError()
-
-                }
-                isLife(life)
-            }
-            buttonB4.setOnClickListener {
-                zhendong()
-
-                if (clicklist[0] == 4) {
-                    clicklist[4]++
-                    fankui = "B4"
-                    Log.d("buttonB4", "${clicklist[4]}")
-                } else {
-                    reclicklist()
-                    clickError()
-
-                }
-                isLife(life)
-            }
-            buttonB5.setOnClickListener {
-                zhendong()
-                if (clicklist[0] == 5) {
-                    clicklist[5]++
-                    fankui = "B5"
-                    Log.d("buttonB5", "${clicklist[5]}")
-                } else {
-                    reclicklist()
-                    clickError()
-                }
-                isLife(life)
-                isSuccess()
-                Log.d("buttonsum", "${clicklist[0]} ${clicklist[1]} ${clicklist[2]} ${clicklist[3]} ${clicklist[4]} ${clicklist[5]}")
-            }
-            imageView2.setOnClickListener {
-                val mediaPlayer = MediaPlayer.create(this, R.raw.daoge)//msg是滴的MP3文件，很小
-                mediaPlayer.start()
-            }
-
+            buttonA.isEnabled=true
+            buttonB1.isEnabled=true
+            buttonB2.isEnabled=true
+            buttonB3.isEnabled=true
+            buttonB4.isEnabled=true
+            buttonB5.isEnabled=true
+            imageView2.isEnabled=true
             //timeEnd()
+        }
+
+        buttonA.setOnClickListener {
+            zhendong()
+            if(fankui=="A" && clicklist[0]==0){
+                clicklist[0]++
+                Log.d("buttonA", "${clicklist[0]}")
+            }
+            else if(fankui=="B1" && clicklist[0]==1){
+                clicklist[0]++
+                Log.d("buttonA", "${clicklist[0]}")
+            }
+            else if(fankui=="B2" && clicklist[0]==2){
+                clicklist[0]++
+                Log.d("buttonA", "${clicklist[0]}")
+            }
+            else if(fankui=="B3" && clicklist[0]==3){
+                clicklist[0]++
+                Log.d("buttonA", "${clicklist[0]}")
+            }
+            else if(fankui=="B4" && clicklist[0]==4){
+                clicklist[0]++
+                Log.d("buttonA", "${clicklist[0]}")
+            }
+            else if(fankui=="B5" && clicklist[0]==5){
+                clicklist[0]++
+                Log.d("buttonA", "${clicklist[0]}")
+            }else{
+                reclicklist()
+                clickError()
+            }
+
+            isLife(life)
+        }
+
+        buttonB1.setOnClickListener {
+            zhendong()
+
+            if (clicklist[0] == 1) {
+                clicklist[1]++
+                fankui = "B1"
+                Log.d("buttonB1", "${clicklist[1]}")
+            }
+            else {
+                reclicklist()
+                clickError()
+            }
+
+            isLife(life)
+        }
+        buttonB2.setOnClickListener {
+            zhendong()
+            if (clicklist[0] == 2) {
+                clicklist[2]++
+                fankui = "B2"
+                Log.d("buttonB2", "${clicklist[2]}")
+            } else {
+                reclicklist()
+                clickError()
+
+            }
+
+            isLife(life)
+
+        }
+        buttonB3.setOnClickListener {
+            zhendong()
+            if (clicklist[0] == 3) {
+                clicklist[3]++
+                fankui = "B3"
+                Log.d("buttonB3", "${clicklist[3]}")
+            } else {
+                reclicklist()
+                clickError()
+
+            }
+            isLife(life)
+        }
+        buttonB4.setOnClickListener {
+            zhendong()
+
+            if (clicklist[0] == 4) {
+                clicklist[4]++
+                fankui = "B4"
+                Log.d("buttonB4", "${clicklist[4]}")
+            } else {
+                reclicklist()
+                clickError()
+
+            }
+            isLife(life)
+        }
+        buttonB5.setOnClickListener {
+            zhendong()
+            if (clicklist[0] == 5) {
+                clicklist[5]++
+                fankui = "B5"
+                Log.d("buttonB5", "${clicklist[5]}")
+            } else {
+                reclicklist()
+                clickError()
+            }
+            isLife(life)
+            isSuccess()
+            Log.d("buttonsum", "${clicklist[0]} ${clicklist[1]} ${clicklist[2]} ${clicklist[3]} ${clicklist[4]} ${clicklist[5]}")
+        }
+        imageView2.setOnClickListener {
+            val mediaPlayer = MediaPlayer.create(this, R.raw.daoge)//msg是滴的MP3文件，很小
+            mediaPlayer.start()
         }
     }
 
@@ -224,12 +241,15 @@ class MainActivity3 : AppCompatActivity() {
         fun isLife(l: Int){  //三次生命，gameover
             if(l<=0){
                 Toast.makeText(this, "你失败了，再来一局", Toast.LENGTH_SHORT).show()
+                second = 0
+                running = false
+                life = 5
+                successcount = 0
+
                 val intent = Intent(this,FailActivity::class.java)
                 startActivity(intent)
 
-                second = 0
-                 running = false
-                life = 3
+
             }
 
         }
@@ -237,13 +257,15 @@ class MainActivity3 : AppCompatActivity() {
         fun timeEnd(){   //时间到了,成功结束一局游戏
             if(second>30){
                 Toast.makeText(this, "时间到了,在30秒内成功了${successcount}轮", Toast.LENGTH_SHORT).show()
-
-                val intent = Intent(this,SuccessActivity::class.java)
-                startActivity(intent)
-
                 second = 0
                 running=false
-                successcount = 0
+                //successcount = 0
+
+                val intent = Intent(this,SuccessActivity::class.java)
+                intent.putExtra("successcount", successcount)
+                startActivity(intent)
+
+
                 reclicklist()
             }
         }
@@ -283,5 +305,22 @@ class MainActivity3 : AppCompatActivity() {
         mediaPlayer.release()
     }
 
+    override fun onRestart() {
+        super.onRestart()
+        Log.d("buttonrestart","成功重启")
+        reclicklist()
+        life=5
+        successcount=0
+        textView_successCount.text="成功：${successcount}"
+        textView_life.text="生命：${life}"
+        buttonA.isEnabled=false
+        buttonB1.isEnabled=false
+        buttonB2.isEnabled=false
+        buttonB3.isEnabled=false
+        buttonB4.isEnabled=false
+        buttonB5.isEnabled=false
+        imageView2.isEnabled=false
+
+    }
 
     }
