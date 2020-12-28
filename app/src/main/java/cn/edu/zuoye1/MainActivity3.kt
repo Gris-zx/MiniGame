@@ -17,11 +17,11 @@ class MainActivity3 : AppCompatActivity() {
     var second = 0
     var running = false
 
-    var time=""
+//    var time=""
 
     var clicklist = arrayOf(0, 0, 0, 0, 0, 0)
 
-    var life = 5
+    var life = 10
 
     var successcount= 0
 
@@ -83,12 +83,9 @@ class MainActivity3 : AppCompatActivity() {
 
         }
         button_home.setOnClickListener {
-            val intent = Intent(this,MainActivity2::class.java)
-            startActivity(intent)
-
-            mediaPlayer.reset()
-            mediaPlayer.release()
-
+//            mediaPlayer.reset()
+//            mediaPlayer.release()
+            finish()
         }
 
         button_start.setOnClickListener {
@@ -212,9 +209,16 @@ class MainActivity3 : AppCompatActivity() {
             isSuccess()
             Log.d("buttonsum", "${clicklist[0]} ${clicklist[1]} ${clicklist[2]} ${clicklist[3]} ${clicklist[4]} ${clicklist[5]}")
         }
+            //点到手了
         imageView2.setOnClickListener {
             val mediaPlayer = MediaPlayer.create(this, R.raw.daoge)//msg是滴的MP3文件，很小
             mediaPlayer.start()
+
+            reclicklist()
+            clickError()
+
+            isLife(life)
+
         }
     }
 
@@ -238,17 +242,22 @@ class MainActivity3 : AppCompatActivity() {
 //         fun sucessCount(){
 //
 //         }
-        fun isLife(l: Int){  //三次生命，gameover
+        fun isLife(l: Int){  //十次生命，失败跳失败界面
             if(l<=0){
                 Toast.makeText(this, "你失败了，再来一局", Toast.LENGTH_SHORT).show()
                 second = 0
                 running = false
-                life = 5
+                life = 10
                 successcount = 0
 
                 val intent = Intent(this,FailActivity::class.java)
                 startActivity(intent)
+//
+//                mediaPlayer.reset()
+//                mediaPlayer.release()
 
+
+                reclicklist()
 
             }
 
@@ -264,20 +273,22 @@ class MainActivity3 : AppCompatActivity() {
                 val intent = Intent(this,SuccessActivity::class.java)
                 intent.putExtra("successcount", successcount)
                 startActivity(intent)
+//
+//                mediaPlayer.reset()
+//                mediaPlayer.release()
 
 
-                reclicklist()
             }
         }
 
 
-        fun clickError(){
+        fun clickError(){   //点错位置了
             if(life>=0) {
                 life--
             }
             reclicklist()
             textView_life.text="生命：${life}"
-            Toast.makeText(this, "位置错误，请重新点击,你还有${life}次机会!!!", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "位置错误，请重新点击,你还有${life}次机会!!!", Toast.LENGTH_SHORT).show()
         }
 
         fun runTimer(){
@@ -301,16 +312,37 @@ class MainActivity3 : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        Log.d("buttondestory","销毁")
         mediaPlayer.reset()
         mediaPlayer.release()
+    }
+
+//    override fun onStop() {
+//        super.onStop()
+//        Log.d("buttonStop","停止")
+//        mediaPlayer.pause()
+//    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("buttonPause","暂停")
+        if (mediaPlayer.isPlaying){
+            mediaPlayer.pause()
+        }
+
     }
 
     override fun onRestart() {
         super.onRestart()
         Log.d("buttonrestart","成功重启")
         reclicklist()
-        life=5
+        life=10
         successcount=0
+        //-------------------
+        second = 0
+        running = false
+
+        mediaPlayer.start()
         textView_successCount.text="成功：${successcount}"
         textView_life.text="生命：${life}"
         buttonA.isEnabled=false

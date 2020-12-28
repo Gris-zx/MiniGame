@@ -3,4 +3,7 @@
     <string name="button">Click me</string>
     <string name="textView">Hello world!</string>
     <string name="clicked">I am clicked!</string>
+    <string name="fail">您的生命用完了！</string>
+    <string name="again">再来一局</string>
+    <string name="back">返回主界面</string>
 </resources>

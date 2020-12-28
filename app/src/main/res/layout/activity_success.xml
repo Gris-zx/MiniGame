@@ -4,23 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/success"
     tools:context=".SuccessActivity">
 
     <TextView
         android:id="@+id/textView_sc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="221dp"
-        android:layout_marginEnd="161dp"
+        android:layout_width="223dp"
+        android:layout_height="123dp"
+        android:layout_marginTop="176dp"
+        android:layout_marginEnd="92dp"
         android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#EF0808"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_successback"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="475dp" />
+        android:text="再来一局"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

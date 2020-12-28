@@ -4,4 +4,7 @@
     <string name="button">点击我111</string>
     <string name="textView">欢迎游玩快刀戳指缝，请点击开始游戏</string>
     <string name="clicked">我被点击了！</string>
+    <string name="fail">您的生命用完了！</string>
+    <string name="again">再来一局</string>
+    <string name="back">返回主界面</string>
 </resources>

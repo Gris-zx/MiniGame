@@ -24,7 +24,7 @@ class MainActivity2 : AppCompatActivity() {
             music()
             AlertDialog.Builder(this)
                 .setMessage("       快刀戳指缝又叫做勇敢者游戏，是《荒野大镖客2》中可以游玩的小游戏之一，考验玩家的手速。\n" +
-                        "在游戏中你需要伸出一只手，五指分开，掌心向下放在桌子上，然后用匕首快速向指缝之间的空位戳刺，你需要快速移动匕首并且避免让手指受伤，戳刺轮数最多的玩家获胜。\n")
+                        "在游戏中你需要伸出一只手，五指分开，掌心向下放在桌子上，然后用匕首快速向指缝之间的空位戳刺，你需要快速移动匕首并且避免让手指受伤，在30秒内戳刺轮数最多的玩家获胜。\n")
                 .setTitle("关于游戏:")
 
                 .setPositiveButton("确定", DialogInterface.OnClickListener { dialogInterface, i ->
